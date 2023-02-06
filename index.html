@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-mobile-web-app-title" content="Зарабатывалка">
+	<title>Phonetics</title>
+	<script src="js/bootstrap.min.js" ></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+	<script src="js/json.js"></script>
+	<script src="js/main.js"></script>
+
+</head>
+<style>
+	body {
+		background-color: #101010;
+		font-family: 'PT Serif', serif, monospace;
+	}
+	button {
+		touch-action: manipulation;
+	}
+	.debug {
+		//outline: 1px inset #0b5ed7;
+	}
+	small {
+		font-size: 8pt; !important;
+	}
+</style>
+<body>
+<div class="container text-center">
+	<div class="row mt-2">
+		<div class="col-md-6 offset-md-3">
+			<div id="main_container" class="debug p-2">
+
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function ready(fn) {
+		if (document.readyState !== 'loading') {
+			fn();
+		} else {
+			document.addEventListener('DOMContentLoaded', fn);
+		}
+	}
+	ready(function(){
+		console.log("DOCUMENT READY")
+		main_menu_populate()
+			});
+</script>
+</body>
+</html>
