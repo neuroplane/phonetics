@@ -15,16 +15,20 @@ const main_menu_populate = function () {
         let element = document.createElement("button");
         console.log(main_menu[index])
         element.innerHTML = main_menu[index]['name']
+        element.disabled = main_menu[index]['is_disabled'];
         element.setAttribute("type", "button")
         element.setAttribute("class", "btn btn m-1")
         element.setAttribute("onclick", main_menu[index]['onclick'])
-        element.setAttribute("style", "color: white; width: 45%; background-color:" + main_menu[index]['color'])
+        element.setAttribute("style", "color: white; height: 100px; width: 45%; background-color:" + main_menu[index]['color'])
         document.getElementById("main_container").append(element)
     }
 };
 
 const articulation = function(){
     empty_div()
+
+
+
     for (let index = 0; index < articulation_array.length; ++index){
         let element_container = document.createElement("button");
         console.log(articulation_array[index]['details'])
@@ -41,7 +45,7 @@ const articulation = function(){
     }
     let back_button = document.createElement("div")
     back_button.setAttribute("class", "d-grid gap-2 mt-2")
-    back_button.innerHTML = "<button class='btn btn-outline-warning btn-sm' onclick='main_menu_populate()'>BACK</button>"
+    back_button.innerHTML = "<button class='my-2 btn btn-outline-warning btn-sm' onclick='main_menu_populate()'>BACK </button>"
     document.getElementById("main_container").append(back_button)
 }
 
@@ -49,6 +53,10 @@ function certain_sound(sound){
     let entries = articulation_array[sound]['entries']
     console.log(entries)
     empty_div()
+    let back_button = document.createElement("div")
+    back_button.setAttribute("class", "d-grid gap-2 mb-5")
+    back_button.innerHTML = "<button class='btn btn-outline-warning btn-sm' onclick='articulation()'>BACK</button>"
+    document.getElementById("main_container").append(back_button)
     for (let index = 0; index < entries.length; ++index){
         let element = document.createElement("p");
 
@@ -58,10 +66,10 @@ function certain_sound(sound){
         element.disabled = true;
         document.getElementById("main_container").append(element)
     }
-    let back_button = document.createElement("div")
-    back_button.setAttribute("class", "d-grid gap-2 mt-2")
-    back_button.innerHTML = "<button class='btn btn-outline-warning btn-sm' onclick='articulation()'>BACK</button>"
-    document.getElementById("main_container").append(back_button)
+    let back_button1 = document.createElement("div")
+    back_button1.setAttribute("class", "d-grid gap-2 mt-2")
+    back_button1.innerHTML = "<button class='my-2 btn btn-outline-warning btn-sm' onclick='main_menu_populate()'>BACK </button>"
+    document.getElementById("main_container").append(back_button1)
 }
 
 empty_div = function (){

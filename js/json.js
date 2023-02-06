@@ -61,8 +61,8 @@ let phonetics_array = [
 ]
 
 let main_menu = [
-    {"name": "Articulation", "color": "#c20000", "onclick": "articulation()", "class": ""},
-    {"name": "Language", "color": "#007539", "onclick": "language()", "class": ""},
-    {"name": "Phonology", "color": "#b31092", "onclick": "phonology()", "class": ""},
-    {"name": "Social", "color": "#d76e00",  "onclick": "social()", "class": ""}
+    {"name": "Articulation", "color": "#c20000", "onclick": "articulation()", "is_disabled": false},
+    {"name": "Language", "color": "#007539", "onclick": "language()", "is_disabled": true},
+    {"name": "Phonology", "color": "#b31092", "onclick": "phonology()", "is_disabled": true},
+    {"name": "Social", "color": "#d76e00",  "onclick": "social()", "is_disabled": true}
 ]
