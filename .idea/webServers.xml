@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bfca084e-12cf-45ee-89d3-02b02fc8aa72" name="phonetics">
+        <fileTransfer rootFolder="/var/www/u1110949/data/www/tagban.ru/plus/phonetics" accessType="SFTP" host="server78.hosting.reg.ru" port="22" sshConfigId="3b2657c3-60c4-4bf5-8c45-132900f0fbd8" sshConfig="u1110949@server78.hosting.reg.ru:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
