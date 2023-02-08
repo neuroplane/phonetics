@@ -138,7 +138,27 @@ function idioms(){
         document.getElementById("main_container").append(element_container)
     }
 }
-
+//////////////////////////////////
+// SIMPLE LIST
+//////////////////////////////////
+function simple_list(func){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < emotions_array.length; ++index) {
+        let element_container = document.createElement("div");
+        let emotions = ""
+        for (let emo = 0; emo < emotions_array[index]['entries'].length; ++emo) {
+            emotions = emotions + '<p>' + emotions_array[index]['entries'][emo] + '</p>'
+        }
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<h5 class=\"card-text\">" + emotions_array[index]['emotion'] + "</h5><hr>" +
+            emotions +
+            "</div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
 function emotions(){
     empty_div()
     back_button("main_menu_populate")
@@ -150,6 +170,44 @@ function emotions(){
         }
         element_container.innerHTML = "<div class='card-body'>" +
             "<h5 class=\"card-text\">" + emotions_array[index]['emotion'] + "</h5><hr>" +
+            emotions +
+            "</div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+function directions(){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < directions_array.length; ++index) {
+        let element_container = document.createElement("div");
+        let emotions = ""
+        for (let emo = 0; emo < directions_array[index]['entries'].length; ++emo) {
+            emotions = emotions + '<p>' + directions_array[index]['entries'][emo] + '</p>'
+        }
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<h5 class=\"card-text\">" + directions_array[index]['type'] + "</h5><hr>" +
+            emotions +
+            "</div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+function concepts(){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < concepts_array.length; ++index) {
+        let element_container = document.createElement("div");
+        let emotions = ""
+        for (let emo = 0; emo < concepts_array[index]['entries'].length; ++emo) {
+            emotions = emotions + '<p>' + concepts_array[index]['entries'][emo] + '</p>'
+        }
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<h5 class=\"card-text\">" + concepts_array[index]['type'] + "</h5><hr>" +
             emotions +
             "</div>"
         element_container.setAttribute("class", "card text-bg-dark mb-3")
