@@ -6,7 +6,21 @@ const add_space = function (string){
     }
 }
 
-
+const gradient_generator = function (color1, k){
+    let r = Math.round(Number("0x"+color1.slice(1, 3)) * k).toString((16))
+    let g = Math.round(Number("0x"+color1.slice(3, 5)) * k).toString((16))
+    let b = Math.round(Number("0x"+color1.slice(5, 7)) * k).toString((16))
+    if (r.toString().length < 2){
+        r = "0" + r
+    }
+    if (g.toString().length < 2) {
+        g = "0" + g
+    }
+    if (b.toString().length < 2){
+        b = "0" + b
+    }
+        return "#" + r + g + b
+}
 
 const main_menu_populate = function () {
     const main = document.getElementById("main_container");
@@ -19,9 +33,8 @@ const main_menu_populate = function () {
         element.setAttribute("type", "button")
         element.setAttribute("class", "btn m-1 border border-0")
         element.setAttribute("onclick", main_menu[index]['onclick'])
-        element.setAttribute("style", "color: white; height: 50px; width: 150px; background: linear-gradient(to bottom right, " + gradients_array[index][0] + ", " + gradients_array[index][1] + ")")
-        //element.style.backgroundImage = "url(./pics/" + index + ".png)"
-        //element.style.backgroundSize = "150px 70px"
+        let color2 = colors_array[index]
+        element.setAttribute("style", "color: white; height: 50px; width: 150px; background: linear-gradient(to bottom right, " + color2 + ", " + gradient_generator(color2, 0.5) + ")")
         document.getElementById("main_container").append(element)
     }
 };
@@ -31,7 +44,6 @@ const articulation = function(){
     back_button("main_menu_populate")
     for (let index = 0; index < articulation_array.length; ++index){
         let element_container = document.createElement("button");
-        console.log(articulation_array[index]['details'])
         let el_type = "<div><h4>" + articulation_array[index]['type'] + "</h4></div>"
         let el__sound = "<small>" + add_space(articulation_array[index]['sound']) + "</small>"
         let el_details = "<small>" + add_space(articulation_array[index]['details']) + "</small>"
@@ -65,7 +77,6 @@ const vowels = function () {
 
 function certain_sound(sound){
     let entries = articulation_array[sound]['entries']
-    console.log(entries)
     empty_div()
     back_button("articulation")
 
@@ -84,7 +95,6 @@ function certain_sound(sound){
 function certain_vowel(vowel){
     let entries = vowels_array[vowel]['entries']
     const main = document.getElementById("main_container");
-    console.log(entries)
     empty_div()
     back_button("vowels")
     for (let index = 0; index < entries.length; ++index){
@@ -155,8 +165,7 @@ function sentences(){
         let element_container = document.createElement("div");
         element_container.innerHTML = "<div class='card-body'>" +
             "<p class=\"card-text\">" + sentences_array[index] + "</p></div>"
-        element_container.s
-        etAttribute("class", "card text-bg-dark mb-3")
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
         document.getElementById("main_container").append(element_container)
     }
     back_button("main_menu_populate")
@@ -182,6 +191,45 @@ function metaphors(){
         let element_container = document.createElement("div");
         element_container.innerHTML = "<div class='card-body'>" +
             "<p class=\"card-text\">" + metaphors_array[index] + "</p></div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+function conversations() {
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < conversation_array.length; ++index) {
+        let element_container = document.createElement("div");
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<p class=\"card-text\">" + conversation_array[index] + "</p></div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+function adjectives() {
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < adjectives_array.length; ++index) {
+        let element_container = document.createElement("div");
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<p class=\"card-text\">" + adjectives_array[index] + "</p></div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+function similes() {
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < similes_array.length; ++index) {
+        let element_container = document.createElement("div");
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<p class=\"card-text\">" + similes_array[index] + "</p></div>"
         element_container.setAttribute("class", "card text-bg-dark mb-3")
         document.getElementById("main_container").append(element_container)
     }
