@@ -11,22 +11,24 @@ const add_space = function (string){
 const main_menu_populate = function () {
     const main = document.getElementById("main_container");
     main.innerHTML = ''
+    main.setAttribute("class", "text-center")
     for (let index = 0; index < main_menu.length; ++index){
         let element = document.createElement("button");
         element.innerHTML = '<span class="main_menu">' + main_menu[index]['name'] + '</span>'
         element.disabled = main_menu[index]['is_disabled'];
         element.setAttribute("type", "button")
-        element.setAttribute("class", "btn btn m-1")
+        element.setAttribute("class", "btn m-1 border border-0")
         element.setAttribute("onclick", main_menu[index]['onclick'])
-        element.setAttribute("style", "color: white; height: 100px; width: 200px; background-color:" + main_menu[index]['color'])
-        element.style.backgroundImage = "url(./pics/" + index + ".png)"
-        element.style.backgroundSize = "200px 100px"
+        element.setAttribute("style", "color: white; height: 50px; width: 150px; background: linear-gradient(to bottom right, " + gradients_array[index][0] + ", " + gradients_array[index][1] + ")")
+        //element.style.backgroundImage = "url(./pics/" + index + ".png)"
+        //element.style.backgroundSize = "150px 70px"
         document.getElementById("main_container").append(element)
     }
 };
 
 const articulation = function(){
     empty_div()
+    back_button("main_menu_populate")
     for (let index = 0; index < articulation_array.length; ++index){
         let element_container = document.createElement("button");
         console.log(articulation_array[index]['details'])
@@ -40,14 +42,12 @@ const articulation = function(){
         element_container.setAttribute("style", "width: 30%")
         document.getElementById("main_container").append(element_container)
     }
-    let back_button = document.createElement("div")
-    back_button.setAttribute("class", "d-grid gap-2 mt-2")
-    back_button.innerHTML = "<button class='my-2 btn btn-outline-warning btn-sm' onclick='main_menu_populate()'>BACK</button>"
-    document.getElementById("main_container").append(back_button)
+    back_button("main_menu_populate")
 }
 
 const vowels = function () {
     empty_div()
+    back_button("main_menu_populate")
     for (let index = 0; index < vowels_array.length; ++index) {
         let element_container = document.createElement("button");
         element_container.innerHTML = "<div>" + vowels_array[index]['type'] + "</div>"
@@ -57,10 +57,8 @@ const vowels = function () {
         element_container.setAttribute("style", "width: 30%")
         document.getElementById("main_container").append(element_container)
     }
-    let back_button = document.createElement("div")
-    back_button.setAttribute("class", "d-grid gap-2 mt-2")
-    back_button.innerHTML = "<button class='my-2 btn btn-outline-warning btn-sm' onclick='main_menu_populate()'>BACK</button>"
-    document.getElementById("main_container").append(back_button)
+
+    back_button("main_menu_populate")
 }
 
 
@@ -69,49 +67,140 @@ function certain_sound(sound){
     let entries = articulation_array[sound]['entries']
     console.log(entries)
     empty_div()
-    let back_button = document.createElement("div")
-    back_button.setAttribute("class", "d-grid gap-2 mb-3")
-    back_button.innerHTML = "<button class='btn btn-outline-warning btn-sm' onclick='articulation()'>BACK</button>"
-    document.getElementById("main_container").append(back_button)
+    back_button("articulation")
 
     for (let index = 0; index < entries.length; ++index){
         let element = document.createElement("p");
         element.innerHTML = entries[index] + '<hr>'
-        element.setAttribute("class", "lead text-warning")
+        element.setAttribute("class", "px-1 lead text-warning")
         element.disabled = true;
         document.getElementById("main_container").append(element)
         }
 
     let back_button1 = document.createElement("div")
-    back_button1.setAttribute("class", "d-grid gap-2 mt-2")
-    back_button1.innerHTML = "<button class='my-2 btn btn-outline-warning btn-sm' onclick='articulation()'>BACK </button>"
-    document.getElementById("main_container").append(back_button1)
+    back_button("articulation")
 }
 
 function certain_vowel(vowel){
     let entries = vowels_array[vowel]['entries']
+    const main = document.getElementById("main_container");
     console.log(entries)
     empty_div()
-    let back_button = document.createElement("div")
-    back_button.setAttribute("class", "d-grid gap-2 mb-3")
-    back_button.innerHTML = "<button class='btn btn-outline-warning btn-sm' onclick='vowels()'>BACK</button>"
-    document.getElementById("main_container").append(back_button)
+    back_button("vowels")
     for (let index = 0; index < entries.length; ++index){
         let element = document.createElement("p");
-        element.innerHTML = entries[index] + '<hr>'
-        element.setAttribute("class", "lead text-warning")
+        let el_hr = document.createElement("hr")
+        el_hr.setAttribute("class", "m-0 text-warning")
+        element.innerHTML = entries[index]
+        element.setAttribute("class", "mx-2 my-0 lead text-warning")
         element.disabled = true;
         document.getElementById("main_container").append(element)
+        document.getElementById("main_container").append(el_hr)
     }
     let back_button1 = document.createElement("div")
-    back_button1.setAttribute("class", "d-grid gap-2 mt-2")
-    back_button1.innerHTML = "<button class='my-2 btn btn-outline-warning btn-sm' onclick='vowels()'>BACK </button>"
-    document.getElementById("main_container").append(back_button1)
+    back_button("vowels")
+}
+
+function proverbs(){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < proverbs_array.length; ++index) {
+        let element_container = document.createElement("div");
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<h5 class=\"card-text\">" +proverbs_array[index]['proverb'] + "</h5><hr>" +
+            "<p>"+proverbs_array[index]['meaning']+"</p>" +
+            "</div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+}
+
+function idioms(){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < idioms_array.length; ++index) {
+        let element_container = document.createElement("div");
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<h5 class=\"card-text\">" + idioms_array[index]['idiom'] + "</h5><hr>" +
+            "<p>"+idioms_array[index]['meaning']+"</p>" +
+            "</div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+}
+
+function emotions(){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < emotions_array.length; ++index) {
+        let element_container = document.createElement("div");
+        let emotions = ""
+        for (let emo = 0; emo < emotions_array[index]['entries'].length; ++emo) {
+            emotions = emotions + '<p>' + emotions_array[index]['entries'][emo] + '</p>'
+        }
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<h5 class=\"card-text\">" + emotions_array[index]['emotion'] + "</h5><hr>" +
+            emotions +
+            "</div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+function sentences(){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < sentences_array.length; ++index) {
+        let element_container = document.createElement("div");
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<p class=\"card-text\">" + sentences_array[index] + "</p></div>"
+        element_container.s
+        etAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+function synonyms(){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < synonyms_array.length; ++index) {
+        let element_container = document.createElement("div");
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<p class=\"card-text\">" + synonyms_array[index] + "</p></div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+function metaphors(){
+    empty_div()
+    back_button("main_menu_populate")
+    for (let index = 0; index < metaphors_array.length; ++index) {
+        let element_container = document.createElement("div");
+        element_container.innerHTML = "<div class='card-body'>" +
+            "<p class=\"card-text\">" + metaphors_array[index] + "</p></div>"
+        element_container.setAttribute("class", "card text-bg-dark mb-3")
+        document.getElementById("main_container").append(element_container)
+    }
+    back_button("main_menu_populate")
+}
+
+back_button = function (where){
+    let back_button = document.createElement("div")
+    back_button.setAttribute("class", "my-3")
+    back_button.innerHTML = "<button class='btn btn-outline-secondary' onclick='"+ where + "()'><i class=\"bi bi-backspace-fill\"></i> BACK</button>"
+
+    document.getElementById("main_container").append(back_button)
 }
 
 empty_div = function (){
     const main = document.getElementById("main_container");
+    main.removeAttribute("class")
     main.innerHTML = ''
+    window.scrollTo(0, 0);
 }
 
 
